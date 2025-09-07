@@ -1,4 +1,4 @@
-package lessone2;
+package lesson2;
 
 public class ForTest {
     public static void main(String[] args) {
