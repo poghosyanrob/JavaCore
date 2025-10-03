@@ -6,6 +6,15 @@ public class DynamicArray {
     private int[] longArray = new int[array.length + 10];
     private int size = 0;
 
+    public void add(int value) {
+        if (size < array.length) {
+            array[size++] = value;
+        } else {
+            extend(value);
+        }
+    }
+
+
     private void extend(int value) {
         if (size < longArray.length) {
             for (int i = 0; i < array.length; i++) {
@@ -17,16 +26,6 @@ public class DynamicArray {
         }
 
     }
-
-
-    public void add(int value) {
-        if (size < array.length) {
-            array[size++] = value;
-        } else {
-            extend(value);
-        }
-    }
-
 
     public void print() {
         if (size > array.length) {
