@@ -5,12 +5,14 @@ public class DynamicArrayDemo {
 
         DynamicArray num = new DynamicArray();
 
-        for (int i = 1; i < 13; i++) {
+        for (int i = 4; i < 18; i++) {
             num.add(i);
         }
 
         System.out.println(num.getByIndex(54));
         System.out.println(num.getByIndex(4));
         num.print();
+
+
     }
 }
