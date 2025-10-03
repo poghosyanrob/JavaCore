@@ -4,14 +4,14 @@ public class DynamicArray {
 
     private int[] array = new int[10];
     private int[] longArray = new int[array.length + 10];
-    private int saze = 0;
+    private int size = 0;
 
     private void extend(int value) {
-        if (saze < longArray.length) {
+        if (size < longArray.length) {
             for (int i = 0; i < array.length; i++) {
                 longArray[i] = array[i];
             }
-            longArray[saze++] = value;
+            longArray[size++] = value;
         } else {
             System.out.println("input 1-20 elements ");
         }
@@ -20,8 +20,8 @@ public class DynamicArray {
 
 
     public void add(int value) {
-        if (saze < array.length) {
-            array[saze++] = value;
+        if (size < array.length) {
+            array[size++] = value;
         } else {
             extend(value);
         }
@@ -29,20 +29,20 @@ public class DynamicArray {
 
 
     public void print() {
-        if (saze > array.length) {
-            for (int i = 0; i < saze; i++) {
+        if (size > array.length) {
+            for (int i = 0; i < size; i++) {
                 System.out.print(longArray[i] + " ");
             }
         } else {
-            for (int i = 0; i < saze; i++) {
+            for (int i = 0; i < size; i++) {
                 System.out.print(array[i] + " ");
             }
         }
     }
 
     public int getByIndex(int index) {
-        if (index < saze) {
-            if (saze <= array.length) {
+        if (index < size) {
+            if (size <= array.length) {
                 for (int i = 0; i < array.length; i++) {
                     if (i == index) {
                         return array[i];
