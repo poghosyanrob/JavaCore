@@ -5,7 +5,7 @@ public class DynamicArrayDemo {
 
         DynamicArray num = new DynamicArray();
 
-        for (int i = 8; i < 28; i++) {
+        for (int i = 5; i < 19; i++) {
             num.add(i);
         }
 

@@ -3,28 +3,21 @@ package homework.dynamicarray;
 public class DynamicArray {
 
     private int[] array = new int[10];
-    private int [] copyArray;
     private int size = 0;
 
     public void add(int value) {
-
-        if (size < array.length) {
-            array[size++] = value;
-        } else {
-            copyArray = new int [array.length];
-            for (int i = 0; i < array.length; i++) {
-                copyArray[i] = array[i];
-            }
+        if (size == array.length) {
             extend();
-            array[size++] = value;
         }
+        array[size++] = value;
     }
 
     private void extend(){
-        array = new int[array.length + 10];
-        for (int i = 0; i < copyArray.length; i++) {
-            array[i] = copyArray[i];
+        int [] copyArray = new int[array.length + 10];
+        for (int i = 0; i < array.length; i++) {
+            copyArray[i] = array[i];
         }
+        array = copyArray;
     }
 
 
