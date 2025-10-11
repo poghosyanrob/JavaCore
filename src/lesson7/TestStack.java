@@ -16,11 +16,11 @@ public class TestStack {
         }
 
         for (int i = 0; i < 10; i++) {
-            System.out.println(mystack1.pop());
+            System.out.print(mystack1.pop() + " ");
         }
-
+        System.out.println();
         for (int i = 0; i < 10; i++) {
-            System.out.println(mystack2.pop());
+            System.out.print(mystack2.pop() + " ");
         }
     }
 

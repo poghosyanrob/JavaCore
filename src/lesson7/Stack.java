@@ -1,32 +1,29 @@
 package lesson7;
 
 public class Stack {
-    int [] stck = new int[10];
+    int[] stck = new int[10];
     int tos;
 
-    Stack(){
+    Stack() {
         tos = -1;
     }
 
-    void push(int item){
-        if(tos == 9){
+    void push(int item) {
+        if (tos == 9) {
             System.out.println("no have a place");
-        }else{
+        } else {
             stck[++tos] = item;
         }
     }
 
-    int pop () {
-
-        if(tos < 0){
+    int pop() {
+        if (tos < 0) {
             System.out.println("Cтeк не загружен.");
-            return  0;
-        }else {
+            return 0;
+        } else {
             return stck[tos--];
         }
-
     }
-
 
 
 }
