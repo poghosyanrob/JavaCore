@@ -24,11 +24,11 @@ public class BraceChecker {
             }
         }
         int num = stack.tos / 2;
-        int index  = text.length() - 1;
+        int index = text.length() - 1;
         for (int i = 0; i < num + 1; i++) {
             char k = stack.pop();
             for (int j = index; j > 0; j--) {
-                if(k == text.charAt(j)){
+                if (k == text.charAt(j)) {
                     index = j;
                     break;
                 }
@@ -51,6 +51,8 @@ public class BraceChecker {
                     System.out.println("Error: opened " + a + " but closed " + k+ " at " + index);
                 }
             }
+
+
         }
 
 
