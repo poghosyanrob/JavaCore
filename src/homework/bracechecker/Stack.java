@@ -1,31 +1,26 @@
 package homework.bracechecker;
 
 public class Stack {
-    char[] stck = new char[10];
+    int[] stck;
     int tos;
 
     Stack() {
         tos = -1;
+        stck = new int[10];
     }
 
-    void push(char item) {
-        if (tos == stck.length - 1) {
-            extend();
-        } else {
+    Stack(int lenght){
+        tos = -1;
+        stck = new int[lenght];
+    }
+    void push(int item) {
+        if (tos != stck.length - 1) {
             stck[++tos] = item;
         }
     }
-    private void extend(){
-        char[] copyArray = new char[stck.length + 10];
-        for (int i = 0; i < stck.length; i++) {
-            copyArray[i] = stck[i];
-        }
-        stck = copyArray;
-    }
 
-    char pop() {
+    int pop() {
         if (tos < 0) {
-            System.out.println("Cтeк не загружен.");
             return 0;
         } else {
             return stck[tos--];

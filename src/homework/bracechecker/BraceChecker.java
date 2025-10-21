@@ -2,59 +2,49 @@ package homework.bracechecker;
 
 public class BraceChecker {
     private String text;
+    Stack stack;
 
-    BraceChecker(String text) {
-        this.text = text;
-    }
-
-    void chack() {
-        Stack stack = new Stack();
+    public void chack(String text) {
+        stack = new Stack(text.length());
         for (int i = 0; i < text.length(); i++) {
-            switch (text.charAt(i)) {
+            char c = text.charAt(i);
+            int last;
+            switch (c) {
                 case '[':
                 case '(':
                 case '{':
-                    stack.push(text.charAt(i));
+                    stack.push(c);
+                    break;
+                case '}':
+                    last = stack.pop();
+                    if (last == 0) {
+                        System.err.println("Error at " + i + ": closed } but not opened ");
+                    } else if (last != '{') {
+                        System.err.println("Error at " + i + ": closed } but opened " + (char) last);
+                    }
                     break;
                 case ']':
+                    last = stack.pop();
+                    if (last == 0) {
+                        System.err.println("Error at " + i + ": closed ] but not opened ");
+                    } else if (last != '[') {
+                        System.err.println("Error at " + i + ": closed ] but opened " + (char) last);
+                    }
+                    break;
                 case ')':
-                case '}':
-                    stack.push(text.charAt(i));
+                    last = stack.pop();
+                    if (last == 0) {
+                        System.err.println("Error at " + i + ": closed ) but not opened ");
+                    } else if (last != '(') {
+                        System.err.println("Error at " + i + ": closed ) but opened " + (char) last);
+                    }
                     break;
             }
         }
-        int num = stack.tos / 2;
-        int index = text.length() - 1;
-        for (int i = 0; i < num + 1; i++) {
-            char k = stack.pop();
-            for (int j = index; j > 0; j--) {
-                if (k == text.charAt(j)) {
-                    index = j;
-                    break;
-                }
-            }
-            if (k == '}') {
-                char a = stack.pop();
-                if (a != '{') {
-                    System.out.println("Error: opened " + a + " but closed " + k + " at " + index);
-                }
-            }
-            if (k == ']') {
-                char a = stack.pop();
-                if (a != '[') {
-                    System.out.println("Error: opened " + a + " but closed " + k+ " at " + index);
-                }
-            }
-            if (k == ')') {
-                char a = stack.pop();
-                if (a != '(') {
-                    System.out.println("Error: opened " + a + " but closed " + k+ " at " + index);
-                }
-            }
-
-
+        int last;
+        while ((last = stack.pop()) != 0) {
+            System.out.println("Error: opened" + (char) last + " without closed");
         }
-
 
     }
 }
