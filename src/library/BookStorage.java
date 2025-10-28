@@ -58,7 +58,7 @@ public class BookStorage {
         int num_Start = Integer.parseInt(start);
         int num_End = Integer.parseInt(end);
         for (int i = 0; i < size; i++) {
-            if (num_Start < books[i].getPrice() && books[i].getPrice() < num_End) {
+            if (num_Start <= books[i].getPrice() && books[i].getPrice() <= num_End) {
                 System.out.println(books[i]);
             }
         }
