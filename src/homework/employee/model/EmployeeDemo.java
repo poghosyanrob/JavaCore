@@ -32,7 +32,7 @@ public class EmployeeDemo implements Coomandes {
                     System.out.println("Please input employee's ID for search employee");
                     String id = scanner.nextLine();
                     try {
-                        employeeStorage.searchID(id);
+                        System.out.println(employeeStorage.searchID(id));
                     } catch (EmployeeIdNotFoundException e) {
                         System.out.println(e.getMessage());
                     }

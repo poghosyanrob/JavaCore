@@ -32,10 +32,10 @@ public class EmployeeStorage {
     }
 
 
-    public void searchID(String id) throws EmployeeIdNotFoundException {
+    public Employee searchID(String id) throws EmployeeIdNotFoundException {
         for (int i = 0; i < size; i++) {
             if (id.contains(employees[i].getEmployeeID())){
-                System.out.println(employees[i]);
+                return employees[i];
             }
         }
         throw new EmployeeIdNotFoundException("EMPLOYEE BY THAT "+ id +" NOT FOUND PLEASE TRY AGAIN");
