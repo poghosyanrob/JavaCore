@@ -1,7 +1,9 @@
-package homework.employee.aboutemployee;
+package homework.employee.model;
 
 import homework.employee.Coomandes;
 import homework.employee.Employee;
+import homework.employee.EmployeeIdNotFoundException;
+import homework.employee.storage.EmployeeStorage;
 
 import java.util.Scanner;
 
@@ -29,7 +31,11 @@ public class EmployeeDemo implements Coomandes {
                 case SEARCH_EMPLOYEE_BY_EMPLOYEE_ID:
                     System.out.println("Please input employee's ID for search employee");
                     String id = scanner.nextLine();
-                    employeeStorage.searchID(id);
+                    try {
+                        employeeStorage.searchID(id);
+                    } catch (EmployeeIdNotFoundException e) {
+                        System.out.println(e.getMessage());
+                    }
                     break;
                 case SEARCH_EMPLOYEE_BY_COMPANE_NAME:
                     System.out.println("Please input compane's name for search");

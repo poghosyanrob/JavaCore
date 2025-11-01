@@ -1,6 +1,7 @@
-package homework.employee.aboutemployee;
+package homework.employee.storage;
 
 import homework.employee.Employee;
+import homework.employee.EmployeeIdNotFoundException;
 
 public class EmployeeStorage {
 
@@ -31,12 +32,13 @@ public class EmployeeStorage {
     }
 
 
-    public void searchID(String id) {
+    public void searchID(String id) throws EmployeeIdNotFoundException {
         for (int i = 0; i < size; i++) {
             if (id.contains(employees[i].getEmployeeID())){
                 System.out.println(employees[i]);
             }
         }
+        throw new EmployeeIdNotFoundException("EMPLOYEE BY THAT "+ id +" NOT FOUND PLEASE TRY AGAIN");
     }
 
     public void searchCompane(String  compane) {
