@@ -1,4 +1,4 @@
-package homework.employee;
+package homework.employee.exception;
 
 public class EmployeeIdNotFoundException extends Exception {
     public EmployeeIdNotFoundException(String message) {

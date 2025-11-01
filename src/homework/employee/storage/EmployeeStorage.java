@@ -1,7 +1,7 @@
 package homework.employee.storage;
 
 import homework.employee.Employee;
-import homework.employee.EmployeeIdNotFoundException;
+import homework.employee.exception.EmployeeIdNotFoundException;
 
 public class EmployeeStorage {
 

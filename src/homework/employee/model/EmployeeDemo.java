@@ -2,7 +2,7 @@ package homework.employee.model;
 
 import homework.employee.Coomandes;
 import homework.employee.Employee;
-import homework.employee.EmployeeIdNotFoundException;
+import homework.employee.exception.EmployeeIdNotFoundException;
 import homework.employee.storage.EmployeeStorage;
 
 import java.util.Scanner;
