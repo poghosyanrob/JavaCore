@@ -1,6 +1,7 @@
 package homework.employee.storage;
 
 import homework.employee.Employee;
+import homework.employee.PositionLevel;
 import homework.employee.exception.EmployeeIdNotFoundException;
 
 public class EmployeeStorage {
@@ -46,6 +47,17 @@ public class EmployeeStorage {
             if (compane.contains(employees[i].getCompany())){
                 System.out.println(employees[i]);
             }
+        }
+    }
+
+    public void searchLevel(PositionLevel positionLevel) {
+        for (int i = 0; i < size; i++) {
+            if(positionLevel == employees[i].getLevel()){
+                System.out.println(employees[i]);
+            }else{
+                System.out.println("You have not "+ positionLevel + " level employee");
+            }
+
         }
     }
 }

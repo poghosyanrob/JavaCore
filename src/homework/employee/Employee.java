@@ -10,18 +10,20 @@ public class Employee {
     private int salary;
     private String company;
     private String position;
+    private PositionLevel level;
 
 
     public Employee() {
 
     }
 
-    public Employee(String name, String surname, int salary, String company, String position) {
+    public Employee(String name, String surname, int salary, String company, String position,PositionLevel level) {
         this.name = name;
         this.surname = surname;
         this.salary = salary;
         this.company = company;
         this.position = position;
+        this.level = level;
     }
 
     public String getName() {
@@ -74,16 +76,24 @@ public class Employee {
         this.employeeID = employeeID;
     }
 
+    public PositionLevel getLevel() {
+        return level;
+    }
+
+    public void setLevel(PositionLevel level) {
+        this.level = level;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
         Employee employee = (Employee) o;
-        return Objects.equals(name, employee.name) && Objects.equals(surname, employee.surname) && Objects.equals(employeeID, employee.employeeID) && Objects.equals(salary, employee.salary) && Objects.equals(company, employee.company) && Objects.equals(position, employee.position);
+        return salary == employee.salary && Objects.equals(name, employee.name) && Objects.equals(surname, employee.surname) && Objects.equals(employeeID, employee.employeeID) && Objects.equals(company, employee.company) && Objects.equals(position, employee.position) && level == employee.level;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(name, surname, employeeID, salary, company, position);
+        return Objects.hash(name, surname, employeeID, salary, company, position, level);
     }
 
     @Override
@@ -92,9 +102,10 @@ public class Employee {
                 "name='" + name + '\'' +
                 ", surname='" + surname + '\'' +
                 ", employeeID='" + employeeID + '\'' +
-                ", salary='" + salary + '\'' +
+                ", salary=" + salary +
                 ", company='" + company + '\'' +
                 ", position='" + position + '\'' +
+                ", level=" + level +
                 '}';
     }
 }

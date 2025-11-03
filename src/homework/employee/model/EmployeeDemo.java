@@ -2,6 +2,7 @@ package homework.employee.model;
 
 import homework.employee.Coomandes;
 import homework.employee.Employee;
+import homework.employee.PositionLevel;
 import homework.employee.exception.EmployeeIdNotFoundException;
 import homework.employee.storage.EmployeeStorage;
 
@@ -37,10 +38,17 @@ public class EmployeeDemo implements Coomandes {
                         System.out.println(e.getMessage());
                     }
                     break;
-                case SEARCH_EMPLOYEE_BY_COMPANE_NAME:
+                case SEARCH_EMPLOYEE_BY_COMPANY_NAME:
                     System.out.println("Please input compane's name for search");
                     String compane = scanner.nextLine();
                     employeeStorage.searchCompane(compane);
+                    break;
+                case  SEARCH_EMPLOYEES_BY_POSITION_LEVEL:
+                    System.out.println("Please input Employee's level for search");
+                    printLevels();
+                    String level = scanner.nextLine();
+                    PositionLevel positionLevel = PositionLevel.valueOf(level);
+                    employeeStorage.searchLevel(positionLevel);
                     break;
                 default:
                     System.err.println("Wrong coomand! Try again");
@@ -62,8 +70,20 @@ public class EmployeeDemo implements Coomandes {
         String company = scanner.nextLine();
         System.out.println("Please  input Employee's position");
         String position = scanner.nextLine();
-        Employee employee = new Employee(name,username,salary,company,position);
+        System.out.println("Please choose Employee's level");
+        printLevels();
+        String level = scanner.nextLine();
+        PositionLevel positionLevel = PositionLevel.valueOf(level);
+        Employee employee = new Employee(name,username,salary,company,position,positionLevel);
         employeeStorage.add(employee);
         System.out.println("Employee added successfully ");
+    }
+
+    private static void printLevels() {
+        PositionLevel[] print = PositionLevel.values();
+        for (PositionLevel positionLevel : print) {
+            System.out.print(positionLevel + " ");
+        }
+        System.out.println();
     }
 }
