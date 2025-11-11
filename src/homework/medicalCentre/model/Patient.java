@@ -9,6 +9,7 @@ public class Patient extends Person {
 
     private String idCard;
     private Doctor doctor;
+    private Date registerDateTime = new Date();
 
     public Patient(String name, String surname, int phone, String idCard,Doctor doctor) {
         super(name, surname, phone);
@@ -17,10 +18,7 @@ public class Patient extends Person {
     }
 
     public Patient() {
-
     }
-
-    private Date registerDateTime = new Date();
 
     public Date getRegisterDateTime() {
         return registerDateTime;
