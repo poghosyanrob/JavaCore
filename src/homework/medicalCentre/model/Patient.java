@@ -1,6 +1,7 @@
 package homework.medicalCentre.model;
 
 import homework.medicalCentre.Person;
+import homework.medicalCentre.util.DateUtil;
 
 import java.util.Date;
 import java.util.Objects;
@@ -9,7 +10,7 @@ public class Patient extends Person {
 
     private String idCard;
     private Doctor doctor;
-    private Date registerDateTime = new Date();
+    private Date date = new Date();
 
     public Patient(String name, String surname, int phone, String idCard,Doctor doctor) {
         super(name, surname, phone);
@@ -20,12 +21,12 @@ public class Patient extends Person {
     public Patient() {
     }
 
-    public Date getRegisterDateTime() {
-        return registerDateTime;
+    public Date getDate() {
+        return date;
     }
 
-    public void setRegisterDateTime(Date registerDateTime) {
-        this.registerDateTime = registerDateTime;
+    public void setDate(Date date) {
+        this.date = date;
     }
 
     public Doctor getDoctor() {
@@ -40,12 +41,12 @@ public class Patient extends Person {
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
         Patient patient = (Patient) o;
-        return Objects.equals(doctor, patient.doctor) && Objects.equals(registerDateTime, patient.registerDateTime);
+        return Objects.equals(doctor, patient.doctor) && Objects.equals(date, patient.date);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(doctor, registerDateTime);
+        return Objects.hash(doctor, date);
     }
 
     @Override
@@ -56,7 +57,7 @@ public class Patient extends Person {
                 ", id Card=" + idCard +
                 ", phone=" + super.getPhone() +
                 ", doctor=" + doctor.getName() +
-                ", registerDateTime=" + registerDateTime +
+                ", date=" + DateUtil.fromDateToStr(date) +
                 "} ";
     }
 }

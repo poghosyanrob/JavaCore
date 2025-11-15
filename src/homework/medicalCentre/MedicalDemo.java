@@ -5,14 +5,15 @@ import homework.medicalCentre.model.Doctor;
 import homework.medicalCentre.model.Patient;
 import homework.medicalCentre.storage.DoctorStorage;
 import homework.medicalCentre.storage.PatientStorage;
+import homework.medicalCentre.util.FileUtil;
 
 import java.util.Scanner;
 
 public class MedicalDemo implements Commands {
 
     private static Scanner scanner = new Scanner(System.in);
-    private static DoctorStorage doctorStorage = new DoctorStorage();
-    private static PatientStorage patientStorage = new PatientStorage();
+    private static DoctorStorage doctorStorage = FileUtil.deserilizeDocotrStorage();
+    private static PatientStorage patientStorage = FileUtil.deserilizePatientStorage();
 
 
     public static void main(String[] args) {
@@ -26,6 +27,7 @@ public class MedicalDemo implements Commands {
                     break;
                 case ADD_DOCTOR:
                     addDoctor();
+                    FileUtil.serializeDoctorData(doctorStorage);
                     break;
                 case SEARCH_DOCTOR_BY_PROFESSION:
                     System.out.println("Please input Doctor's profession for search");
@@ -36,14 +38,17 @@ public class MedicalDemo implements Commands {
                     System.out.println("Please input Doctor's id for delete");
                     int idForDelete = Integer.parseInt(scanner.nextLine());
                     doctorStorage.deleteById(idForDelete);
+                    FileUtil.serializeDoctorData(doctorStorage);
                     break;
                 case CHANGE_DOCTOR_BY_ID:
                     System.out.println("Please input Doctor's id for change");
                     int idForChange = Integer.parseInt(scanner.nextLine());
                     changeDoctor(idForChange);
+                    FileUtil.serializeDoctorData(doctorStorage);
                     break;
                 case ADD_PATIENT:
                     addPatient();
+                    FileUtil.serializePatientData(patientStorage);
                     break;
                 case PRINT_ALL_PATIENTS_BY_DOCTOR:
                     System.out.println("Please input Doctor name");

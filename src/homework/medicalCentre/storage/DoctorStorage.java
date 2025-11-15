@@ -3,7 +3,9 @@ package homework.medicalCentre.storage;
 import homework.medicalCentre.exception.DoctorNotFindByNameException;
 import homework.medicalCentre.model.Doctor;
 
-public class DoctorStorage {
+import java.io.Serializable;
+
+public class DoctorStorage implements Serializable {
 
     private Doctor[] doctors = new Doctor[10];
     private int size = 0;
@@ -45,7 +47,7 @@ public class DoctorStorage {
     }
 
     public void deleteById(int idForDelete)  {
-        if(idForDelete < size){
+        if(idForDelete <= size){
             for (int i = idForDelete - 1; i < size; i++) {
                 if (i != size - 1){
                     doctors[i] = doctors[i + 1];
