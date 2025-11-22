@@ -74,7 +74,6 @@ public class FileAnalyzer {
                 count++;
             }
         }
-
         return count;
     }
 
