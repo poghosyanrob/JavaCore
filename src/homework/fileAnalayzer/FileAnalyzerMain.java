@@ -1,13 +1,11 @@
 package homework.fileAnalayzer;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
 public class FileAnalyzerMain {
 
     public static void main(String[] args) {
-        final String DATA_FILE = "C:\\Users\\myuser\\Desktop\\JavaCore\\src\\homework\\fileAnalayzer\\dataText.data";
+        final String DATA_FILE = "C:\\Users\\myuser\\Desktop\\JavaCore\\src\\homework\\fileAnalayzer\\dataText.txt";
 
         FileAnalyzer text = new FileAnalyzer();
         try {
