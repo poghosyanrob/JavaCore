@@ -15,6 +15,7 @@ public class FileAnalyzerMain {
             System.out.println(text.topFrequentWords(DATA_FILE,2));
             System.out.println(text.countWordOccurrences(DATA_FILE,"rob"));
         } catch (IOException e) {
+
             System.out.println(e.getMessage());
         }
 
