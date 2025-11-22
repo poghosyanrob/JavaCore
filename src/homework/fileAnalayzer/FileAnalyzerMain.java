@@ -14,7 +14,7 @@ public class FileAnalyzerMain {
             System.out.println(text.totalWordCount(DATA_FILE));
             System.out.println(text.uniqueWordCount(DATA_FILE));
             System.out.println(text.topFrequentWords(DATA_FILE, 2));
-            System.out.println(text.countWordOccurrences(DATA_FILE, "rob"));
+            System.out.println(text.countWordOccurrences(DATA_FILE, "are"));
         } catch (IOException e) {
             System.out.println(e.getMessage());
         }
