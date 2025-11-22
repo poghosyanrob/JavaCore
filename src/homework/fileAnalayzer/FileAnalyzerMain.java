@@ -8,6 +8,7 @@ public class FileAnalyzerMain {
         final String DATA_FILE = "C:\\Users\\myuser\\Desktop\\JavaCore\\src\\homework\\fileAnalayzer\\dataText.txt";
 
         FileAnalyzer text = new FileAnalyzer();
+
         try {
             System.out.println(text.wordMap(DATA_FILE));
             System.out.println(text.totalWordCount(DATA_FILE));
