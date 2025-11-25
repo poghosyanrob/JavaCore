@@ -4,57 +4,44 @@ import homework.medicalCentre.exception.DoctorNotFindByNameException;
 import homework.medicalCentre.model.Doctor;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 public class DoctorStorage implements Serializable {
 
-    private Doctor[] doctors = new Doctor[10];
-    private int size = 0;
+    private List<Doctor> doctors = new ArrayList<>();
     private int id = 1;
 
 
     public void addDoctor(Doctor doctor) {
-        if (size == doctors.length) {
-            extend();
-        }
-        doctors[size] = doctor;
-        doctors[size++].setId(id++);
-    }
-
-    private void extend() {
-        Doctor[] newDoctor = new Doctor[size + 10];
-        System.arraycopy(doctors, 0, newDoctor, 0, size);
-        doctors = newDoctor;
+        doctor.setId(id++);
+        doctors.add(doctor);
     }
 
     public void print() {
-        for (int i = 0; i < size; i++) {
-            System.out.println(doctors[i]);
+        for (Doctor doctor : doctors) {
+            System.out.println(doctor);
         }
 
     }
 
     public void doctorFoundingByProfession(String doctorFound){
         boolean bool = true;
-        for (int i = 0; i < size; i++) {
-            if (doctorFound.contains(doctors[i].getProfession())){
-                System.out.println(doctors[i]);
+        for (Doctor doctor : doctors) {
+            if(doctorFound.contains(doctor.getProfession())){
+                System.out.println(doctor);
                 bool = false;
             }
         }
+
         if (bool){
             System.err.println("Doctor BY THAT "+ doctorFound +" NOT FOUND PLEASE TRY AGAIN");
         }
     }
 
     public void deleteById(int idForDelete)  {
-        if(idForDelete <= size){
-            for (int i = idForDelete - 1; i < size; i++) {
-                if (i != size - 1){
-                    doctors[i] = doctors[i + 1];
-                    doctors[i].setId(i + 1);
-                }
-            }
-            this.id = size--;
+        if(idForDelete <= doctors.size()){
+            doctors.remove(idForDelete);
         }else{
             System.err.println("Doctor BY THAT ID "+ idForDelete +" NOT FOUND PLEASE TRY AGAIN");
         }
@@ -63,19 +50,18 @@ public class DoctorStorage implements Serializable {
 
     public Doctor doctorFoundById(int idForChange) {
 
-        for (int i = 0; i < size; i++) {
-            if (idForChange == doctors[i].getId()){
-                return doctors[i];
+        for (Doctor doctor : doctors) {
+            if(idForChange == doctor.getId()){
+                return doctor;
             }
         }
         return null;
     }
 
     public Doctor findByDoctorName(String doctorName) throws DoctorNotFindByNameException{
-
-        for (int i = 0; i < size; i++) {
-            if (doctorName.contains(doctors[i].getName())){
-                return doctors[i];
+        for (Doctor doctor : doctors) {
+            if(doctorName.contains(doctor.getName())){
+                return doctor;
             }
         }
         throw new DoctorNotFindByNameException("Doctor BY THAT " + doctorName + " NOT FOUND PLEASE TRY AGAIN");

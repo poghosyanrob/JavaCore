@@ -3,38 +3,28 @@ package homework.medicalCentre.storage;
 import homework.medicalCentre.model.Patient;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 public class PatientStorage implements Serializable {
 
-    private Patient[] patients = new Patient[10];
-    private int size = 0;
+    private List<Patient> patients = new ArrayList<>();
 
     public void addPatient(Patient patient) {
-
-        if (size == patients.length) {
-            extend();
-        }
-        patients[size++] = patient;
-
-    }
-
-    private void extend() {
-        Patient[] newPatient = new Patient[size + 10];
-        System.arraycopy(patients, 0, newPatient, 0, size);
-        patients = newPatient;
+        patients.add(patient);
     }
 
     public void print() {
-        for (int i = 0; i < size; i++) {
-            System.out.println(patients[i]);
+        for (Patient patient : patients) {
+            System.out.println(patient);
         }
     }
 
     public void findPatientByDoctorName(String docName) {
         boolean bool = true;
-        for (int i = 0; i < size; i++) {
-            if (docName.contains(patients[i].getDoctor().getName())){
-                System.out.println(patients[i]);
+        for (Patient patient : patients) {
+            if(docName.contains(patient.getDoctor().getName())){
+                System.out.println(patient);
                 bool = false;
             }
         }
