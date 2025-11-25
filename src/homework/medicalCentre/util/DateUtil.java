@@ -7,7 +7,7 @@ public abstract class DateUtil {
 
     private static final SimpleDateFormat REGISTERDATATIME = new SimpleDateFormat("dd//MM//yyyy");
 
-    public static String fromDateToStr(Date date){
+    public static String fromDateToStr(Date date) {
         return REGISTERDATATIME.format(date);
     }
 }

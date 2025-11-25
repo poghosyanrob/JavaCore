@@ -73,7 +73,7 @@ public class MedicalDemo implements Commands {
                         System.err.println("Wrong command! Try again");
                 }
             }
-        }else{
+        } else {
             System.err.println("Wrong email or password! Try again");
             printUserEnter();
         }
@@ -102,7 +102,7 @@ public class MedicalDemo implements Commands {
             System.out.println("Please input your password");
             String password = scanner.nextLine();
             nameU = userStorage.foundeName(email);
-            return  userStorage.checkUser(email, password);
+            return userStorage.checkUser(email, password);
         }
         return null;
     }
@@ -156,7 +156,7 @@ public class MedicalDemo implements Commands {
             String idCard = scanner.nextLine();
             System.out.println("Please input Patient's phone number");
             int phone = Integer.parseInt(scanner.nextLine());
-            Patient patient = new Patient(name, surname, phone, idCard, doc,nameU);
+            Patient patient = new Patient(name, surname, phone, idCard, doc, nameU);
             patientStorage.addPatient(patient);
             System.out.println("Patient added successfully ");
         } catch (DoctorNotFindByNameException e) {

@@ -23,13 +23,13 @@ public class PatientStorage implements Serializable {
     public void findPatientByDoctorName(String docName) {
         boolean bool = true;
         for (Patient patient : patients) {
-            if(docName.contains(patient.getDoctor().getName())){
+            if (docName.contains(patient.getDoctor().getName())) {
                 System.out.println(patient);
                 bool = false;
             }
         }
-        if (bool){
-            System.err.println("Doctor BY THAT "+ docName +" NOT FOUND PLEASE TRY AGAIN");
+        if (bool) {
+            System.err.println("Doctor BY THAT " + docName + " NOT FOUND PLEASE TRY AGAIN");
         }
     }
 }
