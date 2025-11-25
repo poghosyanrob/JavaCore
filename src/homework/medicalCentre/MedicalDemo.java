@@ -1,5 +1,7 @@
 package homework.medicalCentre;
 
+import homework.medicalCentre.coomands.Commands;
+import homework.medicalCentre.coomands.UserCommands;
 import homework.medicalCentre.exception.DoctorNotFindByNameException;
 import homework.medicalCentre.model.Doctor;
 import homework.medicalCentre.model.Patient;
