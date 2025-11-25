@@ -11,6 +11,7 @@ import homework.medicalCentre.util.FileUtil;
 
 import java.util.Scanner;
 
+
 public class MedicalDemo implements Commands {
 
     private static Scanner scanner = new Scanner(System.in);
