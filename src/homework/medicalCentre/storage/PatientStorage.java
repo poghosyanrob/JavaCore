@@ -14,7 +14,7 @@ public class PatientStorage implements Serializable {
         patients.add(patient);
     }
 
-    public void print() {
+    public void printPatients() {
         for (Patient patient : patients) {
             System.out.println(patient);
         }

@@ -11,24 +11,24 @@ public class Patient extends Person {
     private String idCard;
     private Doctor doctor;
     private Date date = new Date();
-    private String userName;
+    private String user;
 
-    public Patient(String name, String surname, int phone, String idCard, Doctor doctor, String userName) {
+    public Patient(String name, String surname, int phone, String idCard, Doctor doctor, String user) {
         super(name, surname, phone);
         this.idCard = idCard;
         this.doctor = doctor;
-        this.userName = userName;
+        this.user = user;
     }
 
     public Patient() {
     }
 
-    public String getUserName() {
-        return userName;
+    public String getUser() {
+        return user;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setUser(String user) {
+        this.user = user;
     }
 
     public Date getDate() {
@@ -53,14 +53,13 @@ public class Patient extends Person {
         if (o == null || getClass() != o.getClass()) return false;
         if (!super.equals(o)) return false;
         Patient patient = (Patient) o;
-        return Objects.equals(doctor, patient.doctor) && Objects.equals(date, patient.date) && Objects.equals(userName, patient.userName);
+        return Objects.equals(idCard, patient.idCard) && Objects.equals(doctor, patient.doctor) && Objects.equals(date, patient.date) && Objects.equals(user, patient.user);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(super.hashCode(), doctor, date, userName);
+        return Objects.hash(super.hashCode(), idCard, doctor, date, user);
     }
-
 
     @Override
     public String toString() {
@@ -71,7 +70,7 @@ public class Patient extends Person {
                 ", phone=" + super.getPhone() +
                 ", doctor=" + doctor.getName() +
                 ", date=" + DateUtil.fromDateToStr(date) +
-                ", userName='" + userName + '\'' +
+                ", user='" + user + '\'' +
                 "} ";
     }
 }

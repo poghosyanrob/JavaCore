@@ -3,36 +3,29 @@ package homework.medicalCentre.storage;
 import homework.medicalCentre.model.User;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 public class UserStorage implements Serializable {
 
-    private List<User> users = new ArrayList<>();
-    private Map<String, String> userMap = new HashMap<>();
+     private Map<String, User> userMap = new HashMap<>();
 
-    public void createUser(User user) {
-        users.add(user);
-        userMap.put(user.getEmail(), user.getPassword());
+    public void register(User user) {
+        userMap.put(user.getEmail(), user);
     }
 
 
-    public Boolean checkUser(String email, String password) {
-        if (userMap.containsKey(email) && userMap.get(email).contains(password)) {
-            return true;
+public  User getUserByEmail(String email){
+        return  userMap.get(email);
+}
+
+    public void printAllUsers() {
+        for (User value : userMap.values()) {
+            System.out.println(value);
         }
-        return null;
     }
 
-
-    public String foundeName(String email) {
-        for (User user : users) {
-            if (user.getEmail().contains(email)) {
-                return user.getName();
-            }
-        }
-        return "Not found";
+    public void removeUserByEmail(String userEmail) {
+        userMap.remove(userEmail);
     }
 }

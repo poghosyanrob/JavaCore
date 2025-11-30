@@ -40,8 +40,13 @@ public class DoctorStorage implements Serializable {
     }
 
     public void deleteById(int idForDelete) {
-        if (idForDelete <= doctors.size()) {
-            doctors.remove(idForDelete);
+        int index = idForDelete - 1;
+        if (index > -1 && index <= doctors.size()) {
+            doctors.remove(index);
+            id = 1;
+            for (Doctor doctor : doctors) {
+                doctor.setId(id++);
+            }
         } else {
             System.err.println("Doctor BY THAT ID " + idForDelete + " NOT FOUND PLEASE TRY AGAIN");
         }
@@ -65,5 +70,11 @@ public class DoctorStorage implements Serializable {
             }
         }
         throw new DoctorNotFindByNameException("Doctor BY THAT " + doctorName + " NOT FOUND PLEASE TRY AGAIN");
+    }
+
+    public void printDoctors() {
+        for (Doctor doctor : doctors) {
+            System.out.println(doctor);
+        }
     }
 }
